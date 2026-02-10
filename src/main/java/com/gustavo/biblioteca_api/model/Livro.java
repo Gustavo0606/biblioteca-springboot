@@ -1,7 +1,6 @@
 package com.gustavo.biblioteca_api.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +9,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "livros")
 @NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class Livro {
 
@@ -22,5 +20,12 @@ public class Livro {
     private String urlImagem;
     private boolean emprestado;
 
+
+    public Livro(String titulo, String autor, String urlImagem, boolean emprestado) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.urlImagem = urlImagem;
+        this.emprestado = emprestado;
+    }
 
 }
