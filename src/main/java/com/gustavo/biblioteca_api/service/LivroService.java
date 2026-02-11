@@ -1,5 +1,6 @@
 package com.gustavo.biblioteca_api.service;
 
+import com.gustavo.biblioteca_api.dto.LivroEmprestimoRequest;
 import com.gustavo.biblioteca_api.dto.LivroRequest;
 import com.gustavo.biblioteca_api.dto.LivroResponse;
 import com.gustavo.biblioteca_api.mapper.LivroMapper;
@@ -36,6 +37,14 @@ public class LivroService {
         livro.setEmprestado(false);
         Livro salvo = livroRepository.save(livro);
         return livroMapper.toResponse(salvo);
+    }
+
+    public LivroResponse editarLivro(UUID id, LivroEmprestimoRequest dto){
+        Livro existente = buscarPorId(id);
+        livroMapper.toEntityEdit(dto, existente);
+        Livro atualizado = livroRepository.save(existente);
+        return livroMapper.toResponse(atualizado);
+
     }
 
 

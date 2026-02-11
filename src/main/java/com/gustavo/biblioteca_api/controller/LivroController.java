@@ -1,6 +1,7 @@
 package com.gustavo.biblioteca_api.controller;
 
 
+import com.gustavo.biblioteca_api.dto.LivroEmprestimoRequest;
 import com.gustavo.biblioteca_api.dto.LivroRequest;
 import com.gustavo.biblioteca_api.dto.LivroResponse;
 import com.gustavo.biblioteca_api.service.LivroService;
@@ -33,5 +34,10 @@ public class LivroController {
     @PostMapping("/criar")
     public LivroResponse criarLivro (@RequestBody LivroRequest request){
         return livroService.criarLivro(request);
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public LivroResponse atualizarLivro (@PathVariable UUID id, @RequestBody LivroEmprestimoRequest request){
+        return livroService.editarLivro(id, request);
     }
 }
