@@ -40,4 +40,9 @@ public class LivroController {
     public LivroResponse atualizarLivro (@PathVariable UUID id, @RequestBody LivroEmprestimoRequest request){
         return livroService.editarLivro(id, request);
     }
+
+    @DeleteMapping("/deletar/{id}")
+    public void deletarLivro (@PathVariable UUID id){
+        livroService.excluirLivro(id);
+    }
 }

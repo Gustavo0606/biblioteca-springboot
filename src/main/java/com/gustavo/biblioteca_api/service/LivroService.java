@@ -46,6 +46,10 @@ public class LivroService {
         return livroMapper.toResponse(atualizado);
 
     }
+    public void excluirLivro(UUID id){
+        Livro existente = buscarPorId(id);
+        livroRepository.delete(existente);
+    }
 
 
 }
