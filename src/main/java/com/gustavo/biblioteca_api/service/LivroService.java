@@ -3,6 +3,7 @@ package com.gustavo.biblioteca_api.service;
 import com.gustavo.biblioteca_api.dto.LivroEmprestimoRequest;
 import com.gustavo.biblioteca_api.dto.LivroRequest;
 import com.gustavo.biblioteca_api.dto.LivroResponse;
+import com.gustavo.biblioteca_api.exception.LivroNaoEncontradoException;
 import com.gustavo.biblioteca_api.mapper.LivroMapper;
 import com.gustavo.biblioteca_api.model.Livro;
 import com.gustavo.biblioteca_api.repository.LivroRepository;
@@ -29,7 +30,7 @@ public class LivroService {
 
     public Livro buscarPorId(UUID id) {
         return livroRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Livro não encontrado"));
+                .orElseThrow(() -> new LivroNaoEncontradoException("Livro não encontrado"));
     }
 
     public LivroResponse criarLivro(LivroRequest dto){
