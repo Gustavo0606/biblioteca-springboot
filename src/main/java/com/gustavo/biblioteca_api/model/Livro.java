@@ -15,7 +15,11 @@ public class Livro {
     @Id
     @GeneratedValue
     private UUID id;
+
+    @Column(nullable = false)
     private String titulo;
+
+    @Column(nullable = false)
     private String autor;
     private String urlImagem;
     private boolean emprestado;

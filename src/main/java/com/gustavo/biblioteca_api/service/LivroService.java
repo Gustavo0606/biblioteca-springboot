@@ -1,6 +1,6 @@
 package com.gustavo.biblioteca_api.service;
 
-import com.gustavo.biblioteca_api.dto.LivroEmprestimoRequest;
+import com.gustavo.biblioteca_api.dto.LivroEditarRequest;
 import com.gustavo.biblioteca_api.dto.LivroRequest;
 import com.gustavo.biblioteca_api.dto.LivroResponse;
 import com.gustavo.biblioteca_api.exception.LivroNaoEncontradoException;
@@ -40,7 +40,7 @@ public class LivroService {
         return livroMapper.toResponse(salvo);
     }
 
-    public LivroResponse editarLivro(UUID id, LivroEmprestimoRequest dto){
+    public LivroResponse editarLivro(UUID id, LivroEditarRequest dto){
         Livro existente = buscarPorId(id);
         livroMapper.toEntityEdit(dto, existente);
         Livro atualizado = livroRepository.save(existente);

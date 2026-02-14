@@ -1,10 +1,11 @@
 package com.gustavo.biblioteca_api.controller;
 
 
-import com.gustavo.biblioteca_api.dto.LivroEmprestimoRequest;
+import com.gustavo.biblioteca_api.dto.LivroEditarRequest;
 import com.gustavo.biblioteca_api.dto.LivroRequest;
 import com.gustavo.biblioteca_api.dto.LivroResponse;
 import com.gustavo.biblioteca_api.service.LivroService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import com.gustavo.biblioteca_api.model.Livro;
 import java.util.List;
@@ -32,12 +33,12 @@ public class LivroController {
     }
 
     @PostMapping("/criar")
-    public LivroResponse criarLivro (@RequestBody LivroRequest request){
+    public LivroResponse criarLivro (@Valid @RequestBody LivroRequest request){
         return livroService.criarLivro(request);
     }
 
     @PutMapping("/atualizar/{id}")
-    public LivroResponse atualizarLivro (@PathVariable UUID id, @RequestBody LivroEmprestimoRequest request){
+    public LivroResponse atualizarLivro (@PathVariable UUID id,@Valid @RequestBody LivroEditarRequest request){
         return livroService.editarLivro(id, request);
     }
 
